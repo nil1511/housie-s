@@ -1,0 +1,26 @@
+{
+  "name": "bingo-server",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": {
+    "name": "Nilesh Suthar",
+    "email": "nileshsuthar@live.in"
+  },
+  "dependencies": {
+    "bower": "",
+    "connect": "",
+    "connect-static": "",
+    "engine.io": "",
+    "engine.io-client": "^1.4.0",
+    "hiredis": "",
+    "lodash": "",
+    "primus": "",
+    "primus-redis": "",
+    "redis": ""
+  },
+  "devDependencies": {
+    "grunt": "",
+    "mocha": ""
+  }
+}

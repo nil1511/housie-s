@@ -1,0 +1,23 @@
+{
+  "name": "bingo-s",
+  "version": "0.0.0",
+  "authors": [
+    "Nilesh Suthar <nileshsuthar@live.in>"
+  ],
+  "description": "Server for Bingo",
+  "moduleType": [
+    "node"
+  ],
+  "dependencies": {
+    "angular": ""
+  },
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
