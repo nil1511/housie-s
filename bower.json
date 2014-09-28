@@ -1,10 +1,10 @@
 {
-  "name": "bingo-s",
+  "name": "housie-s",
   "version": "0.0.0",
   "authors": [
     "Nilesh Suthar <nileshsuthar@live.in>"
   ],
-  "description": "Server for Bingo",
+  "description": "Server for Housie",
   "moduleType": [
     "node"
   ],
