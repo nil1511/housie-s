@@ -1,19 +1,22 @@
-var http = require("http");
-var Primus = require("primus");
-var connect = require('connect')
-var createStatic = require('connect-static');
-var _ = require('lodash');
-var app = connect();
-var nums = _.range(1,101)
-var num = _.range(1,101)
+var http = require("http"),
+Primus = require("primus"),
+connect = require('connect'),
+createStatic = require('connect-static'),
+_ = require('lodash'),
+app = connect(),
+nums = _.range(1,101),
+num = _.range(1,101),
+server = http.createServer(app);
+
 createStatic(options, function(err, middleware) {
   if (err) throw err;
   app.use('/', middleware);
 });
-var server = http.createServer(app);
+
 var options = {
   transformer: "engine.io"
-}
+};
+
 var primus = new Primus(server, options);
 primus.on('connection', function(socket) {
   console.log("client has connected");
@@ -32,9 +35,9 @@ function sendNewnum(){
   n = num.splice(0,1);
   console.log(n);
   primus.write(n);
-  if(num.length==0){
+  if(num.length===0){
     console.log('Game Over');
-    clearInterval(game)
+    clearInterval(game);
   }
 }
 
