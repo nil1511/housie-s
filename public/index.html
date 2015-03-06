@@ -14,6 +14,7 @@
     Welcome to Housie Online.
   </p>
   <script>
+  'use strict';
     // var port = 3000;
     var primus = Primus.connect();
     var nums;
@@ -31,7 +32,7 @@
     });
     primus.on('data', function(data) {
       console.log('primus: received data', data);
-      if(data.msg=='list'){
+      if(data.msg==='list'){
         nums = data.nums;
       }
     });

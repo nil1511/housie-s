@@ -13,7 +13,7 @@ size = 25,
 server = http.createServer(app);
 var n;
 var options = {
-  transformer: "engine.io"
+  transformer: "sockjs"
 };
 
 createStatic(options, function(err, middleware) {
