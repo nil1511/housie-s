@@ -13,11 +13,8 @@
     "connect-static": "^1.4.0",
     "engine.io": "^1.5.1",
     "engine.io-client": "^1.4.0",
-    "hiredis": "^0.2.0",
     "lodash": "^3.3.1",
-    "primus": "^2.4.12",
-    "primus-redis": "^0.1.1-1",
-    "redis": "^0.12.1"
+    "primus": "^2.4.12"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
