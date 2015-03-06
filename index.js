@@ -1,3 +1,5 @@
+'use strict';
+
 var http = require("http"),
 Primus = require("primus"),
 connect = require('connect'),
@@ -9,22 +11,22 @@ num = _.range(1,101),
 interval = 5000,
 size = 25,
 server = http.createServer(app);
-
-createStatic(options, function(err, middleware) {
-  if (err) throw err;
-  app.use('/', middleware);
-});
-
+var n;
 var options = {
   transformer: "engine.io"
 };
+
+createStatic(options, function(err, middleware) {
+  if (err) {throw err;}
+  app.use('/', middleware);
+});
 
 var primus = new Primus(server, options);
 primus.on('connection', function(socket) {
   console.log("client has connected");
   socket.on('data', function(message) {
     console.log('recieved a new message', message);
-    if(message.msg=='list'){
+    if(message.msg==='list'){
       nums = _.shuffle(nums);
       socket.write( {"msg":"list","nums": nums.slice(0,size) });
     }
@@ -32,7 +34,8 @@ primus.on('connection', function(socket) {
 });
 
 sendNewnum();
-game = setInterval(sendNewnum,interval);
+var game = setInterval(sendNewnum,interval);
+
 function sendNewnum(){
   num = _.shuffle(num);
   n = num.splice(0,1);
@@ -47,5 +50,6 @@ function sendNewnum(){
     },10000);
   }
 }
+
 
 server.listen(3000);
