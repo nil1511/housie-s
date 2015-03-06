@@ -37,10 +37,36 @@ module.exports = function (grunt) {
          reload: true
        }
      }
-
+   },
+   nodemon: {
+      dev: {
+        script: 'index.js',
+        options: {
+          args: ['dev'],
+          nodeArgs: ['--debug'],
+          callback: function (nodemon) {
+            nodemon.on('log', function (event) {
+              console.log(event.colour);
+            });
+          },
+          env: {
+            PORT: '3000'
+          },
+          cwd: __dirname,
+          ignore: ['node_modules/**'],
+          ext: 'js,coffee',
+          watch: ['index.js']
+        }
+      },
+      exec: {
+        options: {
+          exec: 'less'
+        }
+      }
     }
+
   });
 
   // Default task.
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('default', ['jshint','nodemon']);
 };
