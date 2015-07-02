@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Bingo Server</title>
-  <script src='/primus/primus.js'></script>
+  <script src="/socket.io/socket.io.js"></script>
   <script src="//localhost:35729/livereload.js"></script>
 
 </head>
@@ -15,28 +15,26 @@
   </p>
   <script>
   'use strict';
-    // var port = 3000;
-    var primus = Primus.connect();
-    var nums;
-    primus.write({
-      'msg': 'list'
+    var socket = io();
+    socket.emit('getList');
+    var nums = [];
+    socket.on('reconnect', function() {
+      console.log('socket: reconnect event happend');
     });
-    primus.on('reconnect', function() {
-      console.log('primus: reconnect event happend');
+    socket.on('open', function() {
+      console.log('socket: connection established');
     });
-    primus.on('open', function() {
-      console.log('primus: connection established');
+    socket.on('error', function(err) {
+      console.log('socket: error event', err);
     });
-    primus.on('error', function(err) {
-      console.log('primus: error event', err);
+    socket.on('nextNumber', function(data) {
+      console.log('socket: received data', data);
     });
-    primus.on('data', function(data) {
-      console.log('primus: received data', data);
-      if(data.msg==='list'){
-        nums = data.nums;
-      }
+    socket.on('list', function(list) {
+      console.log('received list ', list);
+      nums = list;
     });
-    primus.on('end', function() {
-      console.log('primus: connection closed');
+    socket.on('end', function() {
+      console.log('socket: connection closed');
     });
   </script>
