@@ -9,7 +9,6 @@
     "node"
   ],
   "dependencies": {
-    "angular": ""
   },
   "license": "MIT",
   "private": true,
