@@ -15,8 +15,9 @@
   </p>
   <script>
   'use strict';
+    var jsonObject = {};
     var socket = io();
-    socket.emit('getList');
+    socket.emit('register', jsonObject);
     var nums = [];
     socket.on('reconnect', function() {
       console.log('socket: reconnect event happend');
@@ -37,4 +38,5 @@
     socket.on('end', function() {
       console.log('socket: connection closed');
     });
+    socket.emit('bingoLeft', 4);
   </script>

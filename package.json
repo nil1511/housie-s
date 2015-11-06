@@ -2,7 +2,7 @@
   "name": "bingo-server",
   "version": "0.0.1",
   "scripts": {
-    "start": "iojs index.js"
+    "start": "node index.js"
   },
   "author": {
     "name": "Nilesh Suthar",
