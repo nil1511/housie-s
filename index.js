@@ -56,17 +56,17 @@ io.on('connection', function(socket) {
   });
 
   socket.on('bingoLeft', function(message) {
-    var socketInfo = socketInfoObject[socket.id];
-    socketInfo.bingoLeft = message;
+    var socketInfoObject = socketInfo[socket.id];
+    socketInfoObject.bingoLeft = message;
     io.emit('update', socketInfo);
   });
 
   socket.on('bingoPressed', function(message) {
-    var socketInfo = socketInfoObject[socket.id];
-    socketInfo.gameStatus = message;
+    var socketInfoObject = socketInfo[socket.id];
+    socketInfoObject.gameStatus = message;
     io.emit('update', socketInfo);
 
-    if(message == 1){
+    if(message === 1){
       gameOver();
     }
   });
@@ -84,7 +84,7 @@ function sendNewnum() {
   if (num.length === 0) {
     gameOver();
   }
-};
+}
 
 function gameOver(){
   io.emit('gameOver', socketInfo);
