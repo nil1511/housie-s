@@ -30,7 +30,7 @@ createStatic(options, function(err, middleware) {
 });
 
 io.on('connection', function(socket) {
-  console.log("client has connected");
+  console.log("client has connected", socket.id);
 
 
   socket.on('register', function(message) {
