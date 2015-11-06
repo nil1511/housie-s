@@ -15,6 +15,7 @@ var http = require("http"),
 var n;
 var socketInfo = {};
 var game;
+var port = process.env.PORT || 3000;
 var gameStaredFlag = false;
 
 var options = {
@@ -98,4 +99,4 @@ function gameOver(){
   }, 10000);
 }
 
-server.listen(3000);
+server.listen(port);
