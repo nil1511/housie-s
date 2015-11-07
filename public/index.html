@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>Bingo Server</title>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="//localhost:35729/livereload.js"></script>
+  <!-- <script src="//localhost:35729/livereload.js"></script> -->
 
 </head>
 
@@ -16,7 +16,8 @@
   <script>
   'use strict';
     var jsonObject = {};
-    var socket = io();
+    var socket = io('ws://localhost:3000');
+    // var socket = io('ws://bingoserver.herokuapp.com');
     var nums = [];
     socket.on('reconnect', function() {
       console.log('socket: reconnect event happend');

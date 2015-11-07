@@ -57,12 +57,16 @@ io.on('connection', function(socket) {
   });
 
   socket.on('bingoLeft', function(message) {
+    if(!gameStaredFlag)
+      return;
     var socketInfoObject = socketInfo[socket.id];
     socketInfoObject.bingoLeft = message;
     io.emit('update', socketInfo);
   });
 
   socket.on('bingoPressed', function(message) {
+    if(!gameStaredFlag)
+      return;
     var socketInfoObject = socketInfo[socket.id];
     socketInfoObject.gameStatus = message;
     io.emit('update', socketInfo);
@@ -85,6 +89,8 @@ function startTheGame (){
 }
 
 function sendNewnum() {
+  if(!gameStaredFlag)
+    return;
   num = _.shuffle(num);
   n = num.splice(0, 1);
   console.log(n);
