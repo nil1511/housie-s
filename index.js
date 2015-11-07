@@ -71,6 +71,13 @@ io.on('connection', function(socket) {
       gameOver();
     }
   });
+
+  socket.once('disconnect', function() {
+      console.log('Got disconnect!',socket.id);
+      delete socketInfo[socket.id];
+      io.emit('update', socketInfo);
+   });
+
 });
 
 function startTheGame (){
